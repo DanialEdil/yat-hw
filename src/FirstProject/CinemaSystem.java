@@ -18,7 +18,7 @@ public class CinemaSystem {
     private static void showMenu() {
         int menuNumber = 1;
         while (menuNumber != 0) {
-            System.out.println("1. Print seats\n" + "2. Buy a ticket\n" + "3. Show Statistics\n" + "0. Exit");
+            System.out.println("\n1. Print seats\n" + "2. Buy a ticket\n" + "3. Show Statistics\n" + "0. Exit");
             menuNumber = scanner.nextInt();
 
             switch (menuNumber) {
