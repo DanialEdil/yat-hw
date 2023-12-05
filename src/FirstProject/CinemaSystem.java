@@ -71,25 +71,27 @@ public class CinemaSystem {
     }
 
     private static void buyTicket() {
-        System.out.println("Enter row:");
-        int row = scanner.nextInt();
-        System.out.println("Enter seat:");
-        int seat = scanner.nextInt();
-        System.out.println("Price 10$");
+        int freeSeats = isNotFreeSeats;
+        int row, seat;
+        while (freeSeats == isNotFreeSeats) {
+            System.out.println("Enter row:");
+            row = scanner.nextInt();
+            System.out.println("Enter seat:");
+            seat = scanner.nextInt();
 
-        row -= 1;
-        seat -= 1;
-        if (checkExistSeat(row, seat)) {
-            if (!seatsCinema[row][seat]) {
-                seatsCinema[row][seat] = true;
-                isNotFreeSeats++;
+            row -= 1;
+            seat -= 1;
+            if (checkExistSeat(row, seat)) {
+                if (!seatsCinema[row][seat]) {
+                    System.out.println("Price 10$");
+                    seatsCinema[row][seat] = true;
+                    isNotFreeSeats++;
+                } else {
+                    System.out.println("This seat is already booked!");
+                }
             } else {
-                System.out.println("This seat is already booked!");
-                buyTicket();
+                System.out.println("Such seat doesn't exist");
             }
-        } else {
-            System.out.println("Such seat doesn't exist");
-            buyTicket();
         }
     }
 
