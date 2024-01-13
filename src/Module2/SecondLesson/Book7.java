@@ -1,20 +1,23 @@
 package Module2.SecondLesson;
 
-public class Book {
+import java.util.Arrays;
+
+public class Book7 {
+
 
     private String name;
-    private Author author;
+    private Author[] author;
     private double price;
     private int qty;
 
 
-    public Book(String name, Author author, double price) {
+    public Book7(String name, Author[] author, double price) {
         this.name = name;
         this.author = author;
         this.price = price;
     }
 
-    public Book(String name, Author author, double price, int qty) {
+    public Book7(String name, Author[] author, double price, int qty) {
         this.name = name;
         this.author = author;
         this.price = price;
@@ -30,11 +33,11 @@ public class Book {
         this.name = name;
     }
 
-    public Author getAuthor() {
+    public Author[] getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(Author[] author) {
         this.author = author;
     }
 
@@ -54,25 +57,21 @@ public class Book {
         this.qty = qty;
     }
 
-    public String getAuthorName() {
-        return author.getName();
+
+    public String getAuthorNames() {
+        String result = "";
+
+        for (Author author1 : author) {
+            result += author1.getName() + ", ";
+        }
+
+        return result;
     }
 
-    public char getAuthorGender() {
-        return author.getGender();
-    }
-
-    public String getAuthorEmail() {
-        return author.getEmail();  // cannot use author.name as name is private in Author class
-    }
 
     @Override
     public String toString() {
-        return "Book[" +
-                "name='" + name + '\'' +
-                ", author=" + author +
-                ", price=" + price +
-                ", qty=" + qty +
-                ']';
+        return "Book[" + "name='" + name + '\'' + ", authors{" + Arrays.toString(author) + "}, price=" + price + ", qty=" + qty + ']';
     }
+
 }
