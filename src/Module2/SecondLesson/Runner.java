@@ -108,27 +108,27 @@ public class Runner {
         Scanner scanner = new Scanner(System.in);
         int count = scanner.nextInt();
 
-        Colony[] colonyList = new Colony[count];
+        List<Colony> colonyList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             scanner.nextLine();
             String name = scanner.next();
             int smetPrice = Integer.parseInt(scanner.next());
             int countAparts = Integer.parseInt(scanner.next());
-            Apartment[] apartments = new Apartment[countAparts];
+            List<Apartment> apartments = new ArrayList<>();
             for (int j = 0; j < countAparts; j++) {
                 scanner.nextLine();
                 String apartTitle = scanner.next();
                 int smet = Integer.parseInt(scanner.next());
                 String type = scanner.next();
                 Apartment apartment = new Apartment(apartTitle, smet, type);
-                apartments[j] = apartment;
+                apartments.add(apartment);
             }
 
             Colony colony = new Colony(name, smetPrice, count, apartments);
-            colonyList[i] = colony;
+            colonyList.add(colony);
         }
-        int minColony = colonyList[0].calculatePrice().calculateApartment(colonyList[0].smetPrice);
-        Apartment minColonyApart = colonyList[0].calculatePrice();
+        int minColony = colonyList.get(0).calculatePrice().calculateApartment(colonyList.get(0).smetPrice);
+        Apartment minColonyApart = colonyList.get(0).calculatePrice();
         for (Colony colony : colonyList) {
             if (minColony > colony.calculatePrice().calculateApartment(colony.smetPrice)) {
                 minColonyApart = colony.calculatePrice();
