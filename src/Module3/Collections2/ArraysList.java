@@ -57,8 +57,9 @@ public class ArraysList {
     }
 
     public static void seventhTask() {
-        flowerList.remove(2);
-        System.out.println(flowerList);
+        List<Integer> numberList = Arrays.asList(12, 124, 123, 12);
+        int value = Collections.binarySearch(numberList, 12);
+        System.out.println(value);
     }
 
     public static void eightTask() {
